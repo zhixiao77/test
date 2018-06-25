@@ -1,0 +1,116 @@
+﻿ALTER TABLE t_acats_transfer MODIFY COLUMN `contra_party_account` VARCHAR(80) NOT NULL;
+SELECT id, contra_party_account FROM t_acats_transfer;
+
+ALTER TABLE `t_acats_transfer_op_log_detail` MODIFY COLUMN `body` MEDIUMTEXT NOT NULL;
+SELECT id, body FROM t_acats_transfer_op_log_detail;
+
+ALTER TABLE `t_account_info_modify_apply` MODIFY COLUMN `emails` VARCHAR(256) NULL;
+ALTER TABLE `t_account_info_modify_apply` MODIFY COLUMN `phone_numbers` VARCHAR(512) NULL;
+SELECT id, emails, phone_numbers FROM t_account_info_modify_apply;
+
+-- t_account_request_apex_sketch, `verify_result`
+SELECT id, verify_result FROM t_account_request_apex_sketch;
+
+-- t_account_request_record `apex_response`
+ALTER TABLE `t_account_request_record` MODIFY COLUMN apex_request MEDIUMTEXT NULL;
+SELECT id, apex_request, apex_response FROM t_account_request_record;
+
+ALTER TABLE `t_account_request_risk_managerment` MODIFY COLUMN applicant_info MEDIUMTEXT NULL;
+ALTER TABLE `t_account_request_risk_managerment` MODIFY COLUMN `verify_result` MEDIUMTEXT NULL;
+SELECT id, applicant_info, verify_result FROM t_account_request_risk_managerment;
+
+
+ALTER TABLE `t_applicant_address` MODIFY COLUMN country VARCHAR(80) NULL;     
+ALTER TABLE `t_applicant_address` MODIFY COLUMN state VARCHAR(128) NULL;  
+ALTER TABLE `t_applicant_address` MODIFY COLUMN city  VARCHAR(128) NULL;  
+ALTER TABLE `t_applicant_address` MODIFY COLUMN street_address_line1 VARCHAR(128) NULL;
+ALTER TABLE `t_applicant_address` MODIFY COLUMN street_address_line2 VARCHAR(128) NULL;     
+ALTER TABLE `t_applicant_address` MODIFY COLUMN street_address_line3 VARCHAR(128) NULL;     
+ALTER TABLE `t_applicant_address` MODIFY COLUMN postal_code VARCHAR(80) NULL;   
+ALTER TABLE `t_applicant_address` MODIFY COLUMN origin_state  VARCHAR(128)  NULL;
+ALTER TABLE `t_applicant_address` MODIFY COLUMN origin_city VARCHAR(128)    NULL;
+ALTER TABLE `t_applicant_address` MODIFY COLUMN origin_street_address_line1 VARCHAR(512)    NULL;
+ALTER TABLE `t_applicant_address` MODIFY COLUMN origin_street_address_line2 VARCHAR(512)    NULL; 
+ALTER TABLE `t_applicant_address` MODIFY COLUMN origin_street_address_line3 VARCHAR(512)    NULL; 
+SELECT id, country, state, city, street_address_line1, street_address_line2, street_address_line3, postal_code, origin_state, origin_city, origin_street_address_line1, origin_street_address_line2, origin_street_address_line3 FROM t_applicant_address;
+
+ALTER TABLE t_applicant_beneficiary MODIFY COLUMN `social_security_number` VARCHAR(80) NULL;
+SELECT id, social_security_number FROM t_applicant_beneficiary;
+
+
+ALTER TABLE t_applicant_trusted_contact_person MODIFY COLUMN home_country VARCHAR(128)  NOT NULL;
+ALTER TABLE t_applicant_trusted_contact_person MODIFY COLUMN home_state VARCHAR(128)  NOT NULL;
+ALTER TABLE t_applicant_trusted_contact_person MODIFY COLUMN home_city  VARCHAR(256)  NOT NULL; 
+ALTER TABLE t_applicant_trusted_contact_person MODIFY COLUMN home_street  VARCHAR(256)  NOT NULL;
+ALTER TABLE t_applicant_trusted_contact_person MODIFY COLUMN home_number  VARCHAR(80) NULL;
+ALTER TABLE t_applicant_trusted_contact_person MODIFY COLUMN home_postal_code VARCHAR(80) NOT NULL; 
+ALTER TABLE t_applicant_trusted_contact_person MODIFY COLUMN phone_country  VARCHAR(128)  NOT NULL; 
+ALTER TABLE t_applicant_trusted_contact_person MODIFY COLUMN phone_number VARCHAR(80) NOT NULL;
+SELECT id, home_country, home_state, home_city, home_street, home_number, home_postal_code, phone_country, phone_number FROM t_applicant_trusted_contact_person;
+
+ALTER TABLE t_applicant_w8ben MODIFY COLUMN `foreign_tax_number` VARCHAR(64) NOT NULL;
+SELECT id, foreign_tax_number FROM `t_applicant_w8ben`;
+
+ALTER TABLE t_cm_address MODIFY COLUMN country  VARCHAR(80) NOT NULL; 
+ALTER TABLE t_cm_address MODIFY COLUMN state  VARCHAR(80) NOT NULL; 
+ALTER TABLE t_cm_address MODIFY COLUMN city VARCHAR(80) NOT NULL; 
+ALTER TABLE t_cm_address MODIFY COLUMN street_address_line1 VARCHAR(128)  NOT NULL;
+ALTER TABLE t_cm_address MODIFY COLUMN street_address_line2 VARCHAR(128)  NOT   NULL;
+ALTER TABLE t_cm_address MODIFY COLUMN street_address_line3 VARCHAR(128)  NOT   NULL;
+ALTER TABLE t_cm_address MODIFY COLUMN postal_code  VARCHAR(80) NOT NULL; 
+ALTER TABLE t_cm_address MODIFY COLUMN origin_state VARCHAR(128) NULL;
+ALTER TABLE t_cm_address MODIFY COLUMN origin_city  VARCHAR(128)  NULL;
+ALTER TABLE t_cm_address MODIFY COLUMN origin_street_address_line1  VARCHAR(128)    NULL;
+ALTER TABLE t_cm_address MODIFY COLUMN origin_street_address_line2  VARCHAR(128)    NULL;
+ALTER TABLE t_cm_address MODIFY COLUMN origin_street_address_line3  VARCHAR(128)    NULL;
+SELECT id, country, state, city, street_address_line1, street_address_line2, street_address_line3, postal_code, origin_state, origin_city, origin_street_address_line1,  origin_street_address_line2, origin_street_address_line3 FROM t_cm_address;
+
+ALTER TABLE t_cm_phone MODIFY COLUMN `phone_number` VARCHAR(80) NOT NULL;
+SELECT id, phone_number FROM t_cm_phone;
+
+ALTER TABLE t_customer_basic MODIFY COLUMN id_card_no VARCHAR(80) NULL; 
+ALTER TABLE t_customer_basic MODIFY COLUMN id_social_security_number  VARCHAR(80) NULL;
+ALTER TABLE t_customer_basic MODIFY COLUMN contact_emails VARCHAR(256) NULL;
+SELECT id, id_card_no, id_social_security_number, contact_emails FROM t_customer_basic;
+
+ALTER TABLE t_fin_account_ach_relation MODIFY COLUMN `bank_account` VARCHAR(80) NULL;
+SELECT id, bank_account FROM t_fin_account_ach_relation;
+
+ALTER TABLE t_fin_cash_transfer_ext MODIFY COLUMN `recipient_bank_city` VARCHAR(80) COLLATE utf8mb4_unicode_ci DEFAULT '';
+ALTER TABLE t_fin_cash_transfer_ext MODIFY COLUMN  `recipient_bank_state_province` VARCHAR(80) COLLATE utf8mb4_unicode_ci DEFAULT '';
+ALTER TABLE t_fin_cash_transfer_ext MODIFY COLUMN  `recipient_bank_country` VARCHAR(80) COLLATE utf8mb4_unicode_ci DEFAULT '';
+ ALTER TABLE t_fin_cash_transfer_ext MODIFY COLUMN `recipient_bank_postal_code` VARCHAR(80) COLLATE utf8mb4_unicode_ci DEFAULT '';
+ ALTER TABLE t_fin_cash_transfer_ext MODIFY COLUMN `intermediary_city` VARCHAR(80) COLLATE utf8mb4_unicode_ci DEFAULT '';
+ ALTER TABLE t_fin_cash_transfer_ext MODIFY COLUMN `intermediary_account` VARCHAR(80) COLLATE utf8mb4_unicode_ci DEFAULT '';
+ ALTER TABLE t_fin_cash_transfer_ext MODIFY COLUMN `intermediary_state_province` VARCHAR(80) COLLATE utf8mb4_unicode_ci DEFAULT '';
+ALTER TABLE t_fin_cash_transfer_ext MODIFY COLUMN  `intermediary_country` VARCHAR(80) COLLATE utf8mb4_unicode_ci DEFAULT '';
+ ALTER TABLE t_fin_cash_transfer_ext MODIFY COLUMN `intermediary_postal_code` VARCHAR(80) COLLATE utf8mb4_unicode_ci DEFAULT '';
+ ALTER TABLE t_fin_cash_transfer_ext MODIFY COLUMN `intermediary_street_address_line1` VARCHAR(256) COLLATE utf8mb4_unicode_ci DEFAULT '';
+ ALTER TABLE t_fin_cash_transfer_ext MODIFY COLUMN `intermediary_street_address_line2` VARCHAR(256) COLLATE utf8mb4_unicode_ci DEFAULT '';
+ ALTER TABLE t_fin_cash_transfer_ext MODIFY COLUMN `intermediary_street_address_line3` VARCHAR(256) COLLATE utf8mb4_unicode_ci DEFAULT '';
+ ALTER TABLE t_fin_cash_transfer_ext MODIFY COLUMN `beneficiary_account` VARCHAR(80) COLLATE utf8mb4_unicode_ci DEFAULT '';
+ ALTER TABLE t_fin_cash_transfer_ext MODIFY COLUMN `beneficiary_city` VARCHAR(80) COLLATE utf8mb4_unicode_ci DEFAULT '';
+ ALTER TABLE t_fin_cash_transfer_ext MODIFY COLUMN `beneficiary_state_province` VARCHAR(80) COLLATE utf8mb4_unicode_ci DEFAULT '';
+ ALTER TABLE t_fin_cash_transfer_ext MODIFY COLUMN `beneficiary_country` VARCHAR(80) COLLATE utf8mb4_unicode_ci DEFAULT '';
+ ALTER TABLE t_fin_cash_transfer_ext MODIFY COLUMN `beneficiary_postal_code` VARCHAR(80) COLLATE utf8mb4_unicode_ci DEFAULT '';
+ ALTER TABLE t_fin_cash_transfer_ext MODIFY COLUMN `beneficiary_street_address_line1` VARCHAR(256) COLLATE utf8mb4_unicode_ci DEFAULT '';
+ ALTER TABLE t_fin_cash_transfer_ext MODIFY COLUMN `beneficiary_street_address_line2` VARCHAR(256) COLLATE utf8mb4_unicode_ci DEFAULT '';
+ ALTER TABLE t_fin_cash_transfer_ext MODIFY COLUMN `beneficiary_street_address_line3` VARCHAR(256) COLLATE utf8mb4_unicode_ci DEFAULT '';
+ SELECT id, recipient_bank_city, recipient_bank_state_province, recipient_bank_country, recipient_bank_postal_code, intermediary_city, intermediary_account, intermediary_state_province, intermediary_country, intermediary_postal_code, intermediary_street_address_line1, intermediary_street_address_line2, intermediary_street_address_line3, beneficiary_account, beneficiary_city, beneficiary_state_province,
+ beneficiary_country, beneficiary_postal_code, beneficiary_street_address_line1, beneficiary_street_address_line2, beneficiary_street_address_line3 
+ FROM t_fin_cash_transfer_ext;
+ 
+
+ALTER TABLE t_sod_account_master MODIFY COLUMN `tax_id_number` VARCHAR(80) COLLATE utf8mb4_unicode_ci DEFAULT NULL;
+ALTER TABLE t_sod_account_master MODIFY COLUMN  `address_line1` VARCHAR(96) COLLATE utf8mb4_unicode_ci DEFAULT NULL;
+ALTER TABLE t_sod_account_master MODIFY COLUMN  `address_line2` VARCHAR(96) COLLATE utf8mb4_unicode_ci DEFAULT NULL;
+ALTER TABLE t_sod_account_master MODIFY COLUMN  `address_line3` VARCHAR(96) COLLATE utf8mb4_unicode_ci DEFAULT NULL;
+ALTER TABLE t_sod_account_master MODIFY COLUMN  `address_line4` VARCHAR(96) COLLATE utf8mb4_unicode_ci DEFAULT NULL;
+ALTER TABLE t_sod_account_master MODIFY COLUMN  `city` VARCHAR(80) COLLATE utf8mb4_unicode_ci DEFAULT NULL;
+ALTER TABLE t_sod_account_master MODIFY COLUMN `state` VARCHAR(80) COLLATE utf8mb4_unicode_ci DEFAULT NULL;
+ALTER TABLE t_sod_account_master MODIFY COLUMN  `zip_code` VARCHAR(80) COLLATE utf8mb4_unicode_ci DEFAULT NULL;
+SELECT id, tax_id_number, address_line1, address_line2, address_line3, address_line4, city, state, zip_code FROM t_sod_account_master;
+
+ALTER TABLE t_user MODIFY COLUMN `mobile` VARCHAR(80) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '手机号';
+ALTER TABLE t_user MODIFY COLUMN `email` VARCHAR(128) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '邮箱';
+SELECT id, mobile, email FROM t_user;
